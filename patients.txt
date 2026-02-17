@@ -1,0 +1,2 @@
+101,Rahul,21,fever
+102,soma,23,cold
