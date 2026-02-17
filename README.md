@@ -23,32 +23,34 @@ A Console-Based Hospital Management System developed using Core Java.
 - Git & GitHub
 
 ## 📂 Project Structure
+## 📁 Project Structure
+
+```
 Hospital-Management-System/
 │
-├── src/
-│   ├── model/
-│   │   ├── Patient.java
-│   │   ├── Doctor.java
-│   │   └── Appointment.java
-│   │
-│   ├── service/
-│   │   ├── PatientService.java
-│   │   ├── DoctorService.java
-│   │   ├── AppointmentService.java
-│   │   └── AdminService.java
-│   │
-│   ├── util/
-│   │   └── FileUtil.java
-│   │
-│   └── Main.java
+├── model/
+│   ├── Patient.java
+│   ├── Doctor.java
+│   └── Appointment.java
+│
+├── service/
+│   ├── PatientService.java
+│   ├── DoctorService.java
+│   ├── AppointmentService.java
+│   └── AdminService.java
+│
+├── util/
+│   └── FileUtil.java
 │
 ├── data/
 │   ├── patients.txt
 │   └── doctors.txt
 │
+├── Main.java
 ├── README.md
-├── .gitignore
-└── screenshots/
+└── .gitignore
+```
+
 
 
 ## ▶ How to Run
@@ -56,4 +58,4 @@ Hospital-Management-System/
 2. Run: `java Main`
 
 ## 👨‍💻 Author
-Subrahmanya 
+SUBRAHMANYA
