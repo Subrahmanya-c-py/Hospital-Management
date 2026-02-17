@@ -57,5 +57,9 @@ Hospital-Management-System/
 1. Compile: `javac Main.java`
 2. Run: `java Main`
 
+## Next Update or Improvement of Project 
+20/03/2026
+JDBC + MySQL Full Integration (Industry Style).
+
 ## 👨‍💻 Author
 SUBRAHMANYA
