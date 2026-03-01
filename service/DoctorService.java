@@ -6,68 +6,93 @@ import model.Doctor;
 
 public class DoctorService {
 
-    private ArrayList<Doctor> doctors = new ArrayList<>();
-    private final String FILE_NAME = "doctors.txt";
+    private final Map<Integer, Doctor> doctors = new HashMap<>();
+    private static final String FILE_NAME = "doctors.txt";
 
     public DoctorService() {
         loadFromFile();
     }
 
     public void addDoctor(Doctor doctor) {
-
-        if (searchDoctor(doctor.getId()) != null) {
+        if (doctors.containsKey(doctor.getId())) {
             System.out.println("Doctor ID already exists!");
             return;
         }
 
-        doctors.add(doctor);
-        rewriteFile();
+        doctors.put(doctor.getId(), doctor);
+        saveToFile();
         System.out.println("Doctor added successfully!");
     }
 
     public void viewDoctors() {
         if (doctors.isEmpty()) {
             System.out.println("No doctors found.");
-        } else {
-            for (Doctor d : doctors) {
-                System.out.println(d);
-            }
+            return;
         }
+
+        doctors.values().forEach(System.out::println);
     }
 
     public Doctor searchDoctor(int id) {
-        for (Doctor d : doctors) {
-            if (d.getId() == id)
-                return d;
-        }
-        return null;
+        return doctors.get(id);
     }
 
-    private void rewriteFile() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME))) {
-            for (Doctor d : doctors) {
-                bw.write(d.toFileString());
-                bw.newLine();
+    public void deleteDoctor(int id) {
+        if (doctors.remove(id) != null) {
+            saveToFile();
+            System.out.println("Doctor deleted successfully!");
+        } else {
+            System.out.println("Doctor not found.");
+        }
+    }
+
+    public void updateDoctor(int id, String name, String specialization) {
+        Doctor doctor = doctors.get(id);
+
+        if (doctor == null) {
+            System.out.println("Doctor not found.");
+            return;
+        }
+
+        doctor.setName(name);
+        doctor.setSpecialization(specialization);
+
+        saveToFile();
+        System.out.println("Doctor updated successfully!");
+    }
+
+    private void saveToFile() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
+            for (Doctor doctor : doctors.values()) {
+                writer.write(doctor.toFileString());
+                writer.newLine();
             }
         } catch (IOException e) {
-            System.out.println("Error writing doctor file.");
+            System.out.println("Error saving doctor data." + e);
         }
     }
 
     private void loadFromFile() {
-        try (BufferedReader br = new BufferedReader(new FileReader(FILE_NAME))) {
+        File file = new File(FILE_NAME);
+        if (!file.exists()) return;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
-            while ((line = br.readLine()) != null) {
+
+            while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
-                Doctor d = new Doctor(
+
+                Doctor doctor = new Doctor(
                         Integer.parseInt(data[0]),
                         data[1],
                         data[2]
                 );
-                doctors.add(d);
+
+                doctors.put(doctor.getId(), doctor);
             }
+
         } catch (IOException e) {
-            System.out.println("No previous doctor data found.");
+            System.out.println("Error loading doctor data." + e);
         }
     }
 }

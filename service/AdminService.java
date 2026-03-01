@@ -1,9 +1,11 @@
+package service;
+
 import java.util.Scanner;
 
 public class AdminService {
 
-    private final String USERNAME = "admin";
-    private final String PASSWORD = "1234";
+    private static final String USERNAME = "admin";
+    private static final String PASSWORD = "1234";
 
     public boolean login(Scanner sc) {
 

@@ -1,13 +1,13 @@
 package service;
 
-import model.Appointment;
-import java.util.ArrayList;
 import java.io.*;
+import java.util.*;
+import model.Appointment;
 
 public class AppointmentService {
 
-    private ArrayList<Appointment> appointments = new ArrayList<>();
-    private final String FILE_NAME = "appointments.txt";
+    private final List<Appointment> appointments = new ArrayList<>();
+    private static final String FILE_NAME = "appointments.txt";
 
     public AppointmentService() {
         loadFromFile();
@@ -15,37 +15,65 @@ public class AppointmentService {
 
     public void bookAppointment(Appointment appointment) {
         appointments.add(appointment);
-        saveToFile(appointment);
+        saveToFile();
         System.out.println("Appointment booked successfully!");
     }
 
     public void viewAppointments() {
         if (appointments.isEmpty()) {
             System.out.println("No appointments found.");
+            return;
+        }
+
+        appointments.forEach(System.out::println);
+    }
+
+    public void deleteAppointment(int patientId, int doctorId) {
+        boolean removed = appointments.removeIf(a ->
+                a.getPatientId() == patientId &&
+                a.getDoctorId() == doctorId
+        );
+
+        if (removed) {
+            saveToFile();
+            System.out.println("Appointment deleted successfully!");
         } else {
-            for (Appointment a : appointments) {
-                System.out.println(a);
-            }
+            System.out.println("Appointment not found.");
         }
     }
 
-    private void saveToFile(Appointment appointment) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
-            bw.write(appointment.toString());
-            bw.newLine();
+    private void saveToFile() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
+            for (Appointment appointment : appointments) {
+                writer.write(appointment.toFileString());
+                writer.newLine();
+            }
         } catch (IOException e) {
             System.out.println("Error saving appointment data.");
         }
     }
 
     private void loadFromFile() {
-        try (BufferedReader br = new BufferedReader(new FileReader(FILE_NAME))) {
+        File file = new File(FILE_NAME);
+        if (!file.exists()) return;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
-            while ((line = br.readLine()) != null) {
-                System.out.println("Loaded: " + line);
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+
+                Appointment appointment = new Appointment(
+                        Integer.parseInt(data[0]),
+                        Integer.parseInt(data[1]),
+                        data[2]
+                );
+
+                appointments.add(appointment);
             }
+
         } catch (IOException e) {
-            System.out.println("No previous appointment data found.");
+            System.out.println("Error loading appointment data." + e);
         }
     }
 }

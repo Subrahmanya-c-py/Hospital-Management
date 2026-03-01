@@ -1,23 +1,41 @@
 package model;
 
+import java.util.Objects;
+
 public class Doctor {
 
-    private int id;
+    private final int id; // ID should never change
     private String name;
     private String specialization;
 
     public Doctor(int id, String name, String specialization) {
+        if (id <= 0) {
+            throw new IllegalArgumentException("Doctor ID must be positive.");
+        }
         this.id = id;
-        this.name = name;
-        this.specialization = specialization;
+        this.name = Objects.requireNonNull(name, "Name cannot be null");
+        this.specialization = Objects.requireNonNull(specialization, "Specialization cannot be null");
     }
 
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public String getSpecialization() { return specialization; }
+    public int getId() {
+        return id;
+    }
 
-    public void setName(String name) { this.name = name; }
-    public void setSpecialization(String specialization) { this.specialization = specialization; }
+    public String getName() {
+        return name;
+    }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public void setName(String name) {
+        this.name = Objects.requireNonNull(name, "Name cannot be null");
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = Objects.requireNonNull(specialization, "Specialization cannot be null");
+    }
 
     public String toFileString() {
         return id + "," + name + "," + specialization;
@@ -25,6 +43,8 @@ public class Doctor {
 
     @Override
     public String toString() {
-        return id + " | " + name + " | " + specialization;
+        return "ID: " + id +
+               " | Name: " + name +
+               " | Specialization: " + specialization;
     }
 }

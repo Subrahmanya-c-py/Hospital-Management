@@ -1,6 +1,6 @@
 # 🏥 Hospital Management System
 
-A Console-Based Hospital Management System developed using Core Java.
+A Console-Based Hospital Management System developed, by using Core Java Concept.
 
 ## 📌 Features
 - Add Patient
@@ -14,6 +14,7 @@ A Console-Based Hospital Management System developed using Core Java.
 - View Appointments
 - Admin Login System
 - File Handling (Data Persistence)
+- Exit
 
 ## 🛠 Technologies Used
 - Core Java
@@ -23,7 +24,6 @@ A Console-Based Hospital Management System developed using Core Java.
 - Git & GitHub
 
 ## 📂 Project Structure
-## 📁 Project Structure
 
 ```
 Hospital-Management-System/
@@ -45,6 +45,7 @@ Hospital-Management-System/
 ├── data/
 │   ├── patients.txt
 │   └── doctors.txt
+|   └── appointments.txt
 │
 ├── Main.java
 ├── README.md
