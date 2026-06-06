@@ -1,60 +1,89 @@
-# Compiled Java files
-
+# =========================
+# Java
+# =========================
 *.class
 
-# Log files
-
+# =========================
+# Logs
+# =========================
 *.log
 
+# =========================
 # VS Code
-
+# =========================
 .vscode/
 
+# =========================
 # IntelliJ IDEA
-
+# =========================
 .idea/
 *.iml
 
+# =========================
 # Eclipse
-
+# =========================
 .project
 .classpath
 .settings/
 
-# Build folders
-
+# =========================
+# Build Directories
+# =========================
 target/
 out/
 bin/
 build/
 
-# OS files
-
+# =========================
+# OS Files
+# =========================
 .DS_Store
 Thumbs.db
 
-# Database credentials (future)
+# =========================
+# Environment Files
+# =========================
+.env
 
-application.properties
-
-# Temporary files
-
+# =========================
+# Temporary Files
+# =========================
 *.tmp
 
-# Java archives generated during build
-
-*.war
-*.ear
-
+# =========================
 # Maven
-
+# =========================
 .mvn/
 dependency-reduced-pom.xml
 
+# =========================
 # Gradle
-
+# =========================
 .gradle/
 
-# Environment files
+# =========================
+# Generated Archives
+# =========================
+*.war
+*.ear
 
-.env
+# =========================
+# Database Config
+# =========================
+application.properties
+
+# =========================
+# JDBC Driver
+# =========================
+lib/*.jar
+
+# =========================
+# MySQL Workbench
+# =========================
+*.mwb
+
+# =========================
+# Java Crash Logs
+# =========================
+hs_err_pid*
+replay_pid*
