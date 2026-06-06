@@ -1,7 +1,0 @@
-707,SUBBU,Minor Health Issue
-101,Dr. Mehta,Cardiologist
-102,Dr. Rao,Orthopedic
-118,Shashank Gowda,children doctor
-103,Dr. Sharma,Pediatrician
-104,Dr. Kapoor,Dermatologist
-105,Dr. Iyer,General Physician

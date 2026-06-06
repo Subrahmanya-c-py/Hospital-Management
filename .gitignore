@@ -1,32 +1,60 @@
-# Compiled class files
+# Compiled Java files
+
 *.class
 
 # Log files
+
 *.log
 
+# VS Code
+
+.vscode/
+
 # IntelliJ IDEA
+
 .idea/
 *.iml
 
-# VS Code
-.vscode/
-
-# Jar files
-*.jar
-
 # Eclipse
+
 .project
 .classpath
 .settings/
 
-# Mac system files
-.DS_Store
+# Build folders
 
-# Windows system files
-Thumbs.db
-
-# Build directories
 target/
 out/
 bin/
 build/
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# Database credentials (future)
+
+application.properties
+
+# Temporary files
+
+*.tmp
+
+# Java archives generated during build
+
+*.war
+*.ear
+
+# Maven
+
+.mvn/
+dependency-reduced-pom.xml
+
+# Gradle
+
+.gradle/
+
+# Environment files
+
+.env

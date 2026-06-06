@@ -1,8 +1,0 @@
-101,Rahul,21,fever
-102,soma,23,cold
-103,Rahul Sharma,25,Fever
-201,Anita Verma,40,Diabetes
-303,Arjun Singh,30,Asthma
-407,Priya Patel,28,Migraine
-115,Sunil Kumar,50,Hypertension
-123,Ansh Jammu,20,cold

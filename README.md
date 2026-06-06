@@ -1,32 +1,50 @@
 # 🏥 Hospital Management System
 
-A Console-Based Hospital Management System developed, by using Core Java Concept.
+A Console-Based Hospital Management System developed using Core Java, JDBC, and MySQL.
 
 ## 📌 Features
-- Add Patient
-- View Patients
-- Update Patient
-- Delete Patient
-- Search Patient
-- Add Doctor
-- View Doctors
-- Book Appointment
-- View Appointments
-- Admin Login System
-- File Handling (Data Persistence)
-- Exit
+
+* Add Patient
+* View Patients
+* Search Patient
+* Update Patient
+* Delete Patient
+* Add Doctor
+* View Doctors
+* Search Doctor
+* Update Doctor
+* Delete Doctor
+* Book Appointment
+* View Appointments
+* Search Appointment
+* Delete Appointment
+* Admin Login System
+* JDBC Database Connectivity
+* MySQL Data Persistence
+* Exit
 
 ## 🛠 Technologies Used
-- Core Java
-- OOP Concepts
-- File Handling
-- Collections Framework
-- Git & GitHub
+
+* Core Java
+* JDBC
+* MySQL
+* OOP Concepts
+* Collections Framework
+* Exception Handling
+* DAO Design Pattern
+* Git & GitHub
 
 ## 📂 Project Structure
 
-```
-Hospital-Management-System/
+```text
+HospitalManagementSystem/
+│
+├── database/
+│   ├── DBConnection.java
+│   └── dao/
+│       ├── PatientDAO.java
+│       ├── DoctorDAO.java
+│       └── AppointmentDAO.java
 │
 ├── model/
 │   ├── Patient.java
@@ -34,33 +52,45 @@ Hospital-Management-System/
 │   └── Appointment.java
 │
 ├── service/
-│   ├── PatientService.java
-│   ├── DoctorService.java
-│   ├── AppointmentService.java
 │   └── AdminService.java
 │
-├── util/
-│   └── FileUtil.java
-│
-├── data/
-│   ├── patients.txt
-│   └── doctors.txt
-|   └── appointments.txt
+├── lib/
+│   └── mysql-connector-j-9.6.0.jar
 │
 ├── Main.java
 ├── README.md
 └── .gitignore
 ```
 
-
-
 ## ▶ How to Run
-1. Compile: `javac Main.java`
-2. Run: `java Main`
 
-## Next Update or Improvement of Project 
-20/03/2026
-JDBC + MySQL Full Integration (Industry Style).
+1. Compile:
+
+```bash
+javac -cp ".;lib/*" database\DBConnection.java database\dao\PatientDAO.java database\dao\DoctorDAO.java database\dao\AppointmentDAO.java Main.java
+```
+
+2. Run:
+
+```bash
+java -cp ".;lib/*" Main
+```
+
+## 🗄 Database
+
+* MySQL Database
+* Patients Table
+* Doctors Table
+* Appointments Table
+* Foreign Key Relationships
+
+## Next Update or Improvement of Project
+
+* Appointment JOIN Queries
+* Java Swing GUI
+* Spring Boot REST API
+* Online Appointment Booking
 
 ## 👨‍💻 Author
+
 SUBRAHMANYA
